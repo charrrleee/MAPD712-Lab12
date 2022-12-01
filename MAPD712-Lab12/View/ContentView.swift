@@ -7,15 +7,18 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    
+    @ObservedObject var model = PostViewModel()
+
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List(model.articles) { article in
+            PostView(article: article)
+//                .border(Color.black, width:1)
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 20))
         }
-        .padding()
     }
 }
 
@@ -24,3 +27,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
